@@ -1,3 +1,8 @@
+<style>
+img {
+  border-radius: 50%;
+}
+</style>
 ![Profile Picture](https://avatars.githubusercontent.com/u/108873160?v=4)
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=theotsori&layout=compact)](https://github.com/theotsori)
 [![alx-system_engineering-devops](https://camo.githubusercontent.com/dc53833bcdbd6ae43f183ce1283dbd6ba8d291561a5703d876c6c102567719f2/68747470733a2f2f7777772e763263322e61742f77702d636f6e74656e742f75706c6f6164732f323032312f30312f6465766f70736c696c2e6a7067)](https://github.com/theotsori/alx-system_engineering-devops)
