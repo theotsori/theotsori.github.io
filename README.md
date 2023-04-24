@@ -1,3 +1,4 @@
+![Profile Picture](https://avatars.githubusercontent.com/u/108873160?v=4)
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=theotsori&layout=compact)](https://github.com/theotsori)
 <br>
 - 👋 Hi, I’m @theotsori
