@@ -1,5 +1,8 @@
 ![Profile Picture](https://avatars.githubusercontent.com/u/108873160?v=4&s=150)
 
+- Follow me on [Twitter](https://twitter.com/Theotsori) for updates and news.
+- Connect with me on [LinkedIn](https://www.linkedin.com/in/theodore-tsori) for professional networking.
+
 Hey there! 👋 I'm Theodore, and I have a passion for 💻 Fintech software development. As a Software Engineer, I'm always on the lookout for new and exciting projects to work on. 🔎 I'm currently looking to collaborate with like-minded individuals and teams on anything related to Fintech. 💞 If you're interested in working together, feel free to reach out to me at theodoretsori@gmail.com. 📧 I'm always excited to meet new people who share my passion for cutting-edge technology! 🚀.
 
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=theotsori&layout=compact)](https://github.com/theotsori)
