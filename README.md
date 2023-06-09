@@ -1,15 +1,48 @@
+# Theo Tsourdalakis
 ![Profile Picture](https://avatars.githubusercontent.com/u/108873160?v=4&s=150)
 
-- Follow me on [Twitter](https://twitter.com/Theotsori) for updates and news.
-- Connect with me on [LinkedIn](https://www.linkedin.com/in/theodore-tsori) for professional networking.
+Hey there! 👋 I'm Theodore Tsori, a passionate Software Engineer with a focus on Fintech software development. I love working on cutting-edge projects that combine finance and technology. 
 
-Hey there! 👋 I'm Theodore, and I have a passion for 💻 Fintech software development. As a Software Engineer, I'm always on the lookout for new and exciting projects to work on. 🔎 I'm currently looking to collaborate with like-minded individuals and teams on anything related to Fintech. 💞 If you're interested in working together, feel free to reach out to me at theodoretsori@gmail.com. 📧 I'm always excited to meet new people who share my passion for cutting-edge technology! 🚀.
+## About Me
+- 💻 Software Engineer
+- 🌐 Fintech Enthusiast
+- 📚 Lifelong Learner
+- 🚀 Constantly Exploring New Technologies
 
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=theotsori&layout=compact)](https://github.com/theotsori)
-## Latest Projects
-[![alx-system_engineering-devops](https://camo.githubusercontent.com/dc53833bcdbd6ae43f183ce1283dbd6ba8d291561a5703d876c6c102567719f2/68747470733a2f2f7777772e763263322e61742f77702d636f6e74656e742f75706c6f6164732f323032312f30312f6465766f70736c696c2e6a7067)](https://github.com/theotsori/alx-system_engineering-devops)
-[![binary_trees](https://camo.githubusercontent.com/140a380546cb803d6350c9457d7fbf289354b01204b486aba42901f811763b5a/68747470733a2f2f7265732e636c6f7564696e6172792e636f6d2f70726163746963616c6465762f696d6167652f66657463682f732d2d6f642d6e6144396e2d2d2f635f6c696d6974253243665f6175746f253243666c5f70726f6772657373697665253243715f6175746f253243775f3838302f68747470733a2f2f6d69726f2e6d656469756d2e636f6d2f6d61782f3937352f3125324150574a697754785264517938415f59306841763545672e706e67)](https://github.com/theotsori/binary_trees)
+## Connect with Me
+- 📧 Email: theodoretsori@gmail.com
+- 💼 LinkedIn: [Theodore Tsori](https://www.linkedin.com/in/theodore-tsori)
+- 🐦 Twitter: [@Theotsori](https://twitter.com/Theotsori)
 
-<!---
-theotsori/theotsori is a ✨ special ✨ repository.
---->
+## Projects
+Here are some of my recent projects:
+
+### Project 1: alx-system_engineering-devops
+- Description: DevOps combines software development and IT operations to streamline processes, improve collaboration, and enable faster software delivery. It emphasizes automation, continuous integration, and deployment (CI/CD), infrastructure as code (IaC), and collaboration between teams. DevOps leads to faster time-to-market, higher quality software, and increased agility.
+- GitHub Repository: [alx-system_engineering-devops](https://github.com/theotsori/alx-system_engineering-devops)
+
+### Project 2: binary_trees
+- Description: A binary tree is a hierarchical data structure with nodes that can have at most two children: a left child and a right child. It is commonly used for efficient searching and sorting. Binary trees enable operations like insertion, deletion, traversal, and searching. They are fundamental in computer science and used in various applications.
+- GitHub Repository: [binary_trees](https://github.com/theotsori/binary_trees)
+
+Feel free to explore these projects and provide feedback or suggestions.
+
+## Skills
+- Programming Languages: Java, Python, JavaScript
+- Web Development: HTML, CSS, React
+- Database Technologies: MySQL, MongoDB
+- Version Control: Git, GitHub
+
+## Education
+- Software Engineering Program - African Leadership University
+
+## Interests
+In addition to software development, I have a keen interest in the following areas:
+- Financial Technology
+- Artificial Intelligence
+- Blockchain Technology
+
+## Let's Connect!
+If you're interested in collaborating on a project or discussing any exciting opportunities, feel free to reach out to me. I'm always excited to meet fellow developers and explore new possibilities in the tech world!
+
+Looking forward to connecting with you! 😊
