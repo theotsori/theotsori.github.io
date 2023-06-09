@@ -1,4 +1,4 @@
-# Theo Tsourdalakis
+# Theodore Tsori
 ![Profile Picture](https://avatars.githubusercontent.com/u/108873160?v=4&s=150)
 
 Hey there! 👋 I'm Theodore Tsori, a passionate Software Engineer with a focus on Fintech software development. I love working on cutting-edge projects that combine finance and technology. 
