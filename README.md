@@ -35,6 +35,7 @@ Feel free to explore these projects and provide feedback or suggestions.
 
 ## Education
 - Software Engineering Program - African Leadership University
+- Bachelors Of Business Management - Kenya Highlands University
 
 ## Interests
 In addition to software development, I have a keen interest in the following areas:
