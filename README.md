@@ -18,17 +18,17 @@ Hey there! 👋 I'm Theodore Tsori, a passionate Software Engineer with a focus 
 Here are some of my recent projects:
 
 ### Project 1: alx-system_engineering-devops
-- Description: DevOps combines software development and IT operations to streamline processes, improve collaboration, and enable faster software delivery. It emphasizes automation, continuous integration, and deployment (CI/CD), infrastructure as code (IaC), and collaboration between teams. DevOps leads to faster time-to-market, higher quality software, and increased agility.
+- *Description:* DevOps combines software development and IT operations to streamline processes, improve collaboration, and enable faster software delivery. It emphasizes automation, continuous integration, and deployment (CI/CD), infrastructure as code (IaC), and collaboration between teams. DevOps leads to faster time-to-market, higher quality software, and increased agility.
 - GitHub Repository: [alx-system_engineering-devops](https://github.com/theotsori/alx-system_engineering-devops)
 
 ### Project 2: binary_trees
-- Description: A binary tree is a hierarchical data structure with nodes that can have at most two children: a left child and a right child. It is commonly used for efficient searching and sorting. Binary trees enable operations like insertion, deletion, traversal, and searching. They are fundamental in computer science and used in various applications.
+- *Description:* A binary tree is a hierarchical data structure with nodes that can have at most two children: a left child and a right child. It is commonly used for efficient searching and sorting. Binary trees enable operations like insertion, deletion, traversal, and searching. They are fundamental in computer science and used in various applications.
 - GitHub Repository: [binary_trees](https://github.com/theotsori/binary_trees)
 
 Feel free to explore these projects and provide feedback or suggestions.
 
 ## Skills
-- Programming Languages: Java, Python, JavaScript
+- Programming Languages: C, C#, Python, JavaScript, Ruby
 - Web Development: HTML, CSS, React
 - Database Technologies: MySQL, MongoDB
 - Version Control: Git, GitHub
@@ -40,6 +40,7 @@ Feel free to explore these projects and provide feedback or suggestions.
 ## Interests
 In addition to software development, I have a keen interest in the following areas:
 - Financial Technology
+- Game Development
 - Artificial Intelligence
 - Blockchain Technology
 
@@ -47,3 +48,4 @@ In addition to software development, I have a keen interest in the following are
 If you're interested in collaborating on a project or discussing any exciting opportunities, feel free to reach out to me. I'm always excited to meet fellow developers and explore new possibilities in the tech world!
 
 Looking forward to connecting with you! 😊
+[Twitter](https://twitter.com/Theotsori) | [LinkedIn](https://linkedin.com/in/theodore-tsori)
