@@ -10,7 +10,7 @@ Hey there! 👋 I'm Theodore Tsori, a passionate Software Engineer with a focus 
 - 🚀 Constantly Exploring New Technologies
 
 ## Connect with Me
-- 📧 Email: theodoretsori@gmail.com
+- 📧 Email: [theodoretsori@gmail.com](mailto:theodoretsori@gmail.com)
 - 💼 LinkedIn: [Theodore Tsori](https://www.linkedin.com/in/theodore-tsori)
 - 🐦 Twitter: [@Theotsori](https://twitter.com/Theotsori)
 
