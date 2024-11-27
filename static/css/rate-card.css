@@ -1,0 +1,169 @@
+/* Rate Card Section */
+#rate-card {
+    background-color: lightgray;
+    padding: 20px;
+}
+
+#rate-card h2 {
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #495057;
+}
+
+/* Accordion Styles */
+.accordion-item {
+    margin-bottom: 15px;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.accordion-header {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: none;
+    width: 100%;
+    background: var(--gradient-bg);
+    color: #495057;
+}
+
+.accordion-header .arrow {
+    transition: transform 0.3s ease;
+}
+
+.accordion-header .arrow::before {
+    content: '\25BA'; /* Right arrow (▶) */
+    font-size: 16px;
+    color: #495057;
+}
+
+.accordion-header.active .arrow::before {
+    content: '\25BC'; /* Down arrow (▼) */
+    transform: rotate(0);
+}
+
+.accordion-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background-color: #ffffff;
+    padding: 0 20px;
+}
+
+.accordion-body table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.accordion-body th, .accordion-body td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #dee2e6;
+}
+
+.accordion-body th {
+    background-color: #495057;
+    font-weight: bold;
+    color: #e9ecef;
+}
+
+td {
+    background-color: #f9f9f9;
+    color: #555;
+}
+
+tr:nth-child(even) td {
+    background-color: #e8e8e8;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+/* Price Highlight */
+td {
+    font-weight: normal;
+}
+
+td:first-child {
+    font-weight: bold;
+}
+
+td:nth-child(2), td:nth-child(3), td:nth-child(4), td:nth-child(5) {
+    color: #3c6e71;
+}
+
+td:nth-child(2):hover, td:nth-child(3):hover, td:nth-child(4):hover, td:nth-child(5):hover {
+    color: #dcb86e;
+}
+
+/* Hover and Focus States */
+.accordion-header:hover {
+    background-color: #e9ecef;
+}
+
+.accordion-body tr:hover {
+    background-color: #f8f9fa;
+}
+
+/* Mobile-friendly table styles */
+@media (max-width: 768px) {
+    /* Make table responsive */
+    .accordion-body table {
+        border-collapse: collapse;
+        width: 100%;
+        margin: 20px 0;
+    }
+
+    /* Stack rows for better readability */
+    .accordion-body tr {
+        display: block;
+        border-radius: 8px;
+        background-color: #ffffff;
+    }
+
+    .accordion-body th {
+        display: none;
+    }
+
+    /* Stack data in rows with labels */
+    .accordion-body td {
+        display: block;
+        width: 100%;
+        text-align: left;
+        padding: 12px;
+        border: none;
+        position: relative;
+        box-sizing: border-box;
+    }
+
+    /* Add spacing between items */
+    .accordion-body td {
+        border-bottom: 1px solid #dee2e6;
+    }
+
+    /* Add hover effects for rows */
+    .accordion-body tr:hover {
+        background-color: #f9f9f9;
+    }
+
+    /* Hide other columns on mobile */
+    .accordion-body td:nth-child(2),
+    .accordion-body td:nth-child(4),
+    .accordion-body td:nth-child(5) {
+        display: none;
+    }
+}

@@ -1,0 +1,122 @@
+/* General header section styles */
+header {
+    background: var(--secondary-color);
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+#header.container {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ECF0F1;
+    text-transform: uppercase;
+    letter-spacing: -10px;
+    margin: 0;
+}
+
+header nav {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+header nav ul li {
+    margin: 0 15px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #ECF0F1;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+header nav ul li a:hover {
+    color: var(--primary-color);
+}
+
+header .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+
+header .hamburger span {
+    width: 30px;
+    height: 3px;
+    background-color: #ECF0F1;
+    transition: transform 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 10px 0;
+    }
+
+    #header.container {
+        padding: 0 20px;
+    }
+
+    header nav {
+        display: block;
+        text-align: center;
+        margin-top: 15px;
+    }
+
+    header .hamburger {
+        display: flex;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        width: 100%;
+        padding: 15px 0;
+        background: linear-gradient(90deg, #feb47b, #ff7e5f);
+        position: absolute;
+        top: 80px;
+        left: 0;
+        right: 0;
+        display: none;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    header nav ul li {
+        margin: 8px 0;
+    }
+
+    header nav ul li a {
+        font-size: 1.2rem;
+        color: #ECF0F1;
+        font-weight: 600;
+    }
+
+    header nav ul li a:hover {
+        color: var(--secondary-color);
+    }
+
+    header #nav-links.show {
+        display: block;
+    }
+}

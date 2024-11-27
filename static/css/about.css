@@ -1,0 +1,81 @@
+/* General section styles */
+#about {
+    background-color: #f4f4f9;
+    padding: 50px 0;
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+}
+
+/* Container for content */
+#about .container {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* About header section */
+.about-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.about-header h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.about-header p {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #7f8c8d;
+    margin-bottom: 20px;
+}
+
+/* Image styling */
+.about-header img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 5px solid #3498db;
+    transition: transform 0.3s ease-in-out;
+    z-index: 10;
+}
+
+.about-header img:hover {
+    transform: scale(1.1);
+}
+
+/* About description */
+.about-description p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    text-align: center;
+    max-width: 800px;
+    color: #555;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    #about .container {
+        width: 90%;
+    }
+    
+    .about-header h2 {
+        font-size: 2rem;
+    }
+
+    .about-header p {
+        font-size: 1rem;
+    }
+
+    .about-description p {
+        font-size: 1rem;
+    }
+}
