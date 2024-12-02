@@ -1,7 +1,23 @@
 /* Rate Card Section */
 #rate-card {
-    background-color: lightgray;
+    position: relative;
+    isolation: isolate;
     padding: 20px;
+}
+
+#rate-card::after {
+    content: '';
+    background-image:
+        linear-gradient(
+            225deg,
+            #2b2d42,
+            #edf2f4,
+            #ff7e5f
+        );
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    transform: skewY(-2.5deg);
 }
 
 #rate-card h2 {
@@ -14,7 +30,6 @@
 /* Accordion Styles */
 .accordion-item {
     margin-bottom: 15px;
-    border: 1px solid #dee2e6;
     border-radius: 8px;
     overflow: hidden;
 }

@@ -6,7 +6,7 @@
     --background-color: #edf2f4;
     --text-color: #2b2d42;
     --muted-text-color: #8d99ae;
-    --font-family: 'Roboto', sans-serif;
+    --font-family: system-ui;
     --box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     --border-radius: 12px;
     --gradient-bg: linear-gradient(90deg, #ff7e5f, #feb47b);
@@ -17,6 +17,10 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html {
+    color-scheme: light;
 }
 
 body {
@@ -160,7 +164,7 @@ footer {
 .floating-button {
     width: 60px;
     height: 60px;
-    background-color: var(--primary-color);
+    background: linear-gradient(315deg, #2b2d42, #edf2f4);
     color: #fff;
     font-size: 1.5rem;
     display: flex;
@@ -169,12 +173,15 @@ footer {
     border-radius: 50%;
     box-shadow: var(--box-shadow);
     text-decoration: none;
-    transition: transform 0.3s ease, background-color 0.3s ease;
+    transition: transform 1000ms ease;
 }
 
-.floating-button:hover {
-    background-color: var(--secondary-color);
+.floating-button:hover,
+.floating-button:focus-visible {
+    background: linear-gradient(45deg, #ff7e5f, #2b2d42);
     transform: scale(1.1);
+    transform: translateY(-1rem);
+    transition: transform 250ms;
 }
 
 /* Responsive Design */
