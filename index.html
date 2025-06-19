@@ -1,731 +1,327 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Theodore Tsori - Digital Excellence</title>
-    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <title>Theodore Tsori - Crafting Digital Excellence</title>
+
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/react@18/umd/react.development.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/EffectComposer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/RenderPass.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/UnrealBloomPass.js"></script>
+
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600;700&display=swap');
-        
-        :root {
-            --kenya-sunset: linear-gradient(135deg, #ff6b35 0%, #f7931e 25%, #e91e63 50%, #9c27b0 75%, #673ab7 100%);
-            --savannah-green: linear-gradient(135deg, #2e7d32 0%, #388e3c 50%, #4caf50 100%);
-            --maasai-red: #d32f2f;
-            --acacia-gold: #ffa726;
-            --night-sky: #0d1421;
-        }
-
         body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Outfit', sans-serif;
+            background-color: #0a0a0a;
+            color: #e2e8f0;
             overflow-x: hidden;
-            background: var(--night-sky);
         }
-
-        .hero-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
+        .text-glow {
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.3), 0 0 20px rgba(251, 191, 36, 0.4);
         }
-
-        .orbitron {
-            font-family: 'Orbitron', monospace;
-        }
-
-        .maasai-pattern {
-            background-image: 
-                radial-gradient(circle at 20% 20%, rgba(255, 107, 53, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(156, 39, 176, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 40% 70%, rgba(247, 147, 30, 0.2) 0%, transparent 50%);
-        }
-
-        .glass-morphism {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .neon-glow {
-            box-shadow: 
-                0 0 20px rgba(255, 107, 53, 0.5),
-                0 0 40px rgba(255, 107, 53, 0.3),
-                0 0 60px rgba(255, 107, 53, 0.1);
-        }
-
-        .holographic {
-            background: linear-gradient(45deg, #ff6b35, #f7931e, #e91e63, #9c27b0, #673ab7);
-            background-size: 400% 400%;
-            animation: holographic 3s ease-in-out infinite;
-        }
-
-        @keyframes holographic {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: #ffa726;
-            border-radius: 50%;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(180deg); }
-        }
-
-        .skill-arc {
-            stroke-dasharray: 283;
-            stroke-dashoffset: 283;
-            transition: stroke-dashoffset 2s ease-in-out;
-        }
-
-        .constellation {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: white;
-            border-radius: 50%;
-            animation: twinkle 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes twinkle {
-            0% { opacity: 0.3; }
-            100% { opacity: 1; }
-        }
-
-        .beadwork-frame {
-            position: relative;
-        }
-
-        .beadwork-frame::before {
-            content: '';
-            position: absolute;
-            inset: -10px;
-            background: conic-gradient(from 0deg, #d32f2f, #ffa726, #4caf50, #2196f3, #9c27b0, #d32f2f);
-            border-radius: 50%;
-            animation: rotate 10s linear infinite;
-            z-index: -1;
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .isometric-card {
-            transform-style: preserve-3d;
-            transition: transform 0.6s ease;
-        }
-
-        .isometric-card:hover {
-            transform: rotateX(15deg) rotateY(15deg) translateZ(20px);
-        }
-
-        .drum-pattern {
-            background: 
-                radial-gradient(circle at center, transparent 40%, rgba(211, 47, 47, 0.1) 41%, rgba(211, 47, 47, 0.1) 60%, transparent 61%),
-                conic-gradient(from 0deg, #d32f2f 0deg, #ffa726 72deg, #4caf50 144deg, #2196f3 216deg, #9c27b0 288deg, #d32f2f 360deg);
-            border-radius: 50%;
-        }
-
-        .ripple-effect {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .ripple-effect::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-
-        .ripple-effect:hover::before {
-            width: 300px;
-            height: 300px;
-        }
-
-        .morphing-text {
-            background: var(--kenya-sunset);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: morphing 4s ease-in-out infinite;
-        }
-
-        @keyframes morphing {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        @media (max-width: 768px) {
-            .hero-text {
-                font-size: 2.5rem !important;
-            }
-            
-            .section-padding {
-                padding: 2rem 1rem !important;
-            }
+        .card-bg-glass {
+             background: rgba(22, 22, 22, 0.6);
+             -webkit-backdrop-filter: blur(12px);
+             backdrop-filter: blur(12px);
+             border: 1px solid rgba(255, 255, 255, 0.1);
         }
     </style>
 </head>
 <body>
+
     <div id="root"></div>
 
     <script type="text/babel">
         const { useState, useEffect, useRef } = React;
 
-        // Three.js Hero Background Component
-        const HeroBackground = () => {
-            const canvasRef = useRef();
+        // --- Data based on your CV ---
+        const professional = {
+            name: "Theodore Gift Tsori",
+            tagline: "Crafting Digital Excellence",
+            summary: "Dedicated and versatile professional with experience in accounting, software engineering, and technical writing. Strong analytical and problem-solving skills, coupled with an entrepreneurial mindset.",
+            email: "theodoretsori@gmail.com",
+            phone: "+254790192324",
+            location: "Nairobi, Kenya"
+        };
+
+        const portfolioProjects = [
+            { id: 1, title: "Investment Platform", category: "Development", description: "An innovative application for tracking and managing investment portfolios, built with a focus on user experience and real-time data.", image: "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?q=80&w=2070&auto=format&fit=crop", theme: "bg-teal-500" },
+            { id: 2, title: "Startup Financial Suite", category: "Development", description: "A comprehensive tool for startups to manage accounting, tax preparation, and financial planning.", image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=1911&auto=format&fit=crop", theme: "bg-amber-600" },
+            { id: 3, title: "E-Commerce Site Design", category: "Design", description: "A visually appealing and highly functional e-commerce design with a focus on user engagement and conversion.", image: "https://images.unsplash.com/photo-1522204523234-8729aa6e3d5f?q=80&w=2070&auto=format&fit=crop", theme: "bg-purple-600" },
+            { id: 4, title: "SaaS Dashboard UI/UX", category: "Design", description: "User interface and experience design for a complex SaaS platform, ensuring intuitive navigation and clarity.", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop", theme: "bg-sky-500"},
+        ];
+
+        const skills = [
+            { name: "JavaScript", level: 90, icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
+            { name: "React", level: 85, icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+            { name: "Node.js", level: 75, icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
+            { name: "Python", level: 80, icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+            { name: "Figma", level: 95, icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" },
+            { name: "Tailwind CSS", level: 95, icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
+            { name: "Financial Acct.", level: 88, icon: "https://img.icons8.com/ios/50/ffffff/accounting.png" },
+        ];
+        
+        // --- Hero Section ---
+        const Hero = () => {
+            const mountRef = useRef(null);
+            const textRef = useRef(null);
 
             useEffect(() => {
-                const canvas = canvasRef.current;
+                // WebGL Starry Night Animation
                 const scene = new THREE.Scene();
                 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-                const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
-                
+                const renderer = new THREE.WebGLRenderer({ antialias: true });
                 renderer.setSize(window.innerWidth, window.innerHeight);
-                renderer.setClearColor(0x000000, 0);
-
-                // Create sunset sky
-                const geometry = new THREE.SphereGeometry(500, 32, 32);
-                const material = new THREE.ShaderMaterial({
-                    uniforms: {
-                        time: { value: 0 }
-                    },
-                    vertexShader: `
-                        varying vec3 vPosition;
-                        void main() {
-                            vPosition = position;
-                            gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-                        }
-                    `,
-                    fragmentShader: `
-                        uniform float time;
-                        varying vec3 vPosition;
-                        void main() {
-                            float sunset = smoothstep(-200.0, 200.0, vPosition.y);
-                            vec3 sunsetColor = mix(
-                                vec3(0.05, 0.08, 0.13), // Night sky
-                                vec3(1.0, 0.42, 0.21),  // Sunset orange
-                                sunset * (0.5 + 0.5 * sin(time * 0.001))
-                            );
-                            gl_FragColor = vec4(sunsetColor, 0.8);
-                        }
-                    `,
-                    side: THREE.BackSide
-                });
-
-                const sky = new THREE.Mesh(geometry, material);
-                scene.add(sky);
-
-                // Add floating particles
-                const particleGeometry = new THREE.BufferGeometry();
-                const particleCount = 1000;
-                const positions = new Float32Array(particleCount * 3);
-
-                for (let i = 0; i < particleCount * 3; i++) {
+                mountRef.current.appendChild(renderer.domElement);
+                
+                const starGeo = new THREE.BufferGeometry();
+                const starCount = 6000;
+                const positions = new Float32Array(starCount * 3);
+                for(let i = 0; i < starCount * 3; i++) {
                     positions[i] = (Math.random() - 0.5) * 1000;
                 }
+                starGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+                const starMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 0.7 });
+                const stars = new THREE.Points(starGeo, starMaterial);
+                scene.add(stars);
 
-                particleGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-                const particleMaterial = new THREE.PointsMaterial({
-                    color: 0xffa726,
-                    size: 2,
-                    transparent: true,
-                    opacity: 0.8
-                });
-
-                const particles = new THREE.Points(particleGeometry, particleMaterial);
-                scene.add(particles);
-
-                camera.position.z = 1;
-
-                let startTime = Date.now();
+                camera.position.z = 5;
 
                 const animate = () => {
                     requestAnimationFrame(animate);
-                    
-                    const currentTime = Date.now();
-                    material.uniforms.time.value = currentTime - startTime;
-                    
-                    particles.rotation.x += 0.0005;
-                    particles.rotation.y += 0.001;
-                    
+                    stars.rotation.x += 0.0001;
+                    stars.rotation.y += 0.0001;
                     renderer.render(scene, camera);
                 };
-
                 animate();
 
-                const handleResize = () => {
-                    camera.aspect = window.innerWidth / window.innerHeight;
-                    camera.updateProjectionMatrix();
-                    renderer.setSize(window.innerWidth, window.innerHeight);
-                };
+                // GSAP Text Animation
+                gsap.fromTo(textRef.current.children, 
+                    { opacity: 0, y: 50 }, 
+                    { opacity: 1, y: 0, duration: 1, stagger: 0.3, ease: "power3.out" }
+                );
 
-                window.addEventListener('resize', handleResize);
-
-                return () => {
-                    window.removeEventListener('resize', handleResize);
-                };
+                return () => mountRef.current.removeChild(renderer.domElement);
             }, []);
-
-            return <canvas ref={canvasRef} className="hero-canvas" />;
-        };
-
-        // Hero Section Component
-        const HeroSection = () => {
-            const textRef = useRef();
-            const [currentText, setCurrentText] = useState(0);
-            const texts = ['Financial Expert', 'Business Consultant', 'Digital Innovator', 'Data Analyst'];
-
-            useEffect(() => {
-                const interval = setInterval(() => {
-                    setCurrentText(prev => (prev + 1) % texts.length);
-                }, 3000);
-
-                return () => clearInterval(interval);
-            }, []);
-
-            useEffect(() => {
-                if (textRef.current) {
-                    gsap.fromTo(textRef.current, 
-                        { opacity: 0, y: 50, scale: 0.8 },
-                        { opacity: 1, y: 0, scale: 1, duration: 1, ease: "back.out(1.7)" }
-                    );
-                }
-            }, [currentText]);
 
             return (
-                <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
-                    <HeroBackground />
-                    <div className="text-center z-10 px-6">
-                        <h1 className="hero-text text-6xl md:text-8xl font-black orbitron text-white mb-6 drop-shadow-2xl">
-                            <span className="morphing-text">Theodore Tsori</span>
+                <section className="h-screen w-full relative flex items-center justify-center text-center overflow-hidden">
+                    <div ref={mountRef} className="absolute top-0 left-0 w-full h-full z-0"></div>
+                     <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black via-transparent to-transparent z-10"></div>
+                    <div ref={textRef} className="relative z-20 px-4">
+                        <h1 className="text-5xl md:text-8xl font-black uppercase text-white tracking-wider text-glow">
+                           {professional.name}
                         </h1>
-                        <div className="h-20 mb-8">
-                            <p ref={textRef} className="text-2xl md:text-4xl font-light text-white opacity-90">
-                                {texts[currentText]}
-                            </p>
-                        </div>
-                        <button className="group relative px-8 py-4 bg-gradient-to-r from-orange-500 to-purple-600 text-white font-bold text-lg rounded-full overflow-hidden neon-glow hover:scale-105 transition-all duration-300 ripple-effect">
-                            <span className="relative z-10">Discover My Work</span>
-                            <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-orange-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        </button>
+                        <p className="text-xl md:text-3xl text-amber-400 mt-4 font-light tracking-wide">
+                            {professional.tagline}
+                        </p>
+                        <a href="#portfolio" className="mt-12 inline-block px-8 py-4 bg-amber-500 text-black font-bold uppercase tracking-widest rounded-full transition-all duration-300 hover:bg-white hover:shadow-[0_0_20px_rgba(251,191,36,0.8)] hover:scale-110 transform">
+                            Discover My Work
+                        </a>
                     </div>
-                    
-                    {/* Floating Particles */}
-                    {[...Array(20)].map((_, i) => (
-                        <div
-                            key={i}
-                            className="particle"
-                            style={{
-                                left: `${Math.random() * 100}%`,
-                                top: `${Math.random() * 100}%`,
-                                animationDelay: `${Math.random() * 3}s`
-                            }}
-                        />
-                    ))}
                 </section>
             );
         };
 
-        // About Section Component
-        const AboutSection = () => {
-            const [milestones] = useState([
-                { year: '2019', title: 'Started Career', desc: 'First internship at Merica Hotel' },
-                { year: '2021', title: 'Public Sector', desc: 'Nakuru County Government' },
-                { year: '2024', title: 'Professional Growth', desc: 'CPA Firm Experience' },
-                { year: '2025', title: 'Entrepreneur', desc: 'Freelance Consultant' }
-            ]);
-
-            const [voiceEnabled, setVoiceEnabled] = useState(false);
-
+        // --- About Section ---
+        const About = () => {
             const speakBio = () => {
                 if ('speechSynthesis' in window) {
-                    const utterance = new SpeechSynthesisUtterance(
-                        "I am Theodore Tsori, a dedicated financial professional with a passion for innovation and excellence. With extensive experience in accounting and business consulting, I help organizations achieve their financial goals through strategic planning and cutting-edge solutions."
-                    );
-                    utterance.rate = 0.8;
-                    utterance.pitch = 1;
-                    speechSynthesis.speak(utterance);
-                    setVoiceEnabled(true);
-                    setTimeout(() => setVoiceEnabled(false), 15000);
+                    const utterance = new SpeechSynthesisUtterance(professional.summary);
+                    utterance.lang = 'en-US';
+                    window.speechSynthesis.speak(utterance);
+                } else {
+                    alert("Sorry, your browser doesn't support text-to-speech.");
                 }
             };
 
             return (
-                <section className="min-h-screen py-20 maasai-pattern relative">
-                    <div className="container mx-auto px-6">
-                        <h2 className="text-5xl font-bold text-center mb-16 orbitron text-white">About Me</h2>
-                        
-                        <div className="grid lg:grid-cols-2 gap-12 items-center">
-                            <div className="text-center">
-                                <div className="beadwork-frame w-80 h-80 mx-auto mb-8 relative">
-                                    <div className="w-full h-full rounded-full bg-gradient-to-br from-orange-400 to-purple-600 p-2">
-                                        <div className="w-full h-full rounded-full bg-gray-800 flex items-center justify-center text-6xl font-bold text-white">
-                                            TT
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <button
-                                    onClick={speakBio}
-                                    className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
-                                        voiceEnabled 
-                                            ? 'bg-green-500 text-white' 
-                                            : 'glass-morphism text-white hover:bg-white hover:text-gray-800'
-                                    }`}
-                                >
-                                    {voiceEnabled ? '🔊 Speaking...' : '🎤 Hear My Story'}
-                                </button>
+                <section id="about" className="py-24 bg-gradient-to-br from-[#0f172a] to-[#1e293b]">
+                    <div className="container mx-auto px-6 grid md:grid-cols-5 gap-12 items-center">
+                        <div className="md:col-span-2 flex justify-center">
+                             <div className="relative group">
+                                <img src={`https://ui-avatars.com/api/?name=${professional.name.replace(' ','+')}&background=fbbf24&color=0a0a0a&size=256&bold=true&rounded=true`} alt="Theodore Tsori" className="rounded-full w-64 h-64 border-4 border-amber-400 shadow-xl transition-transform duration-500 group-hover:scale-105" />
+                                <svg className="absolute top-0 left-0 w-full h-full animate-spin-slow" viewBox="0 0 100 100">
+                                    <path id="circlePath" fill="none" d="M 10, 50 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0"/>
+                                    <text>
+                                        <textPath href="#circlePath" className="fill-slate-400 text-xs tracking-widest uppercase">
+                                            Designer - Developer - Innovator - Accountant
+                                        </textPath>
+                                    </text>
+                                </svg>
                             </div>
-
-                            <div className="glass-morphism rounded-3xl p-8">
-                                <h3 className="text-3xl font-bold text-white mb-6">My Journey</h3>
-                                <p className="text-gray-200 text-lg leading-relaxed mb-8">
-                                    I am a dedicated financial professional with extensive experience in accounting, 
-                                    business management, and financial consultancy. My journey spans from hands-on 
-                                    accounting roles to freelance consulting, where I help startups and individuals 
-                                    optimize their financial processes and ensure regulatory compliance.
-                                </p>
-
-                                <div className="space-y-4">
-                                    {milestones.map((milestone, index) => (
-                                        <div
-                                            key={index}
-                                            className="flex items-center space-x-4 p-4 bg-white bg-opacity-10 rounded-xl hover:bg-opacity-20 transition-all duration-300 cursor-pointer group"
-                                        >
-                                            <div className="w-16 h-16 bg-gradient-to-br from-orange-400 to-purple-600 rounded-full flex items-center justify-center font-bold text-white group-hover:scale-110 transition-transform duration-300">
-                                                {milestone.year}
-                                            </div>
-                                            <div>
-                                                <h4 className="text-xl font-semibold text-white">{milestone.title}</h4>
-                                                <p className="text-gray-300">{milestone.desc}</p>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
+                        </div>
+                        <div className="md:col-span-3 text-left">
+                            <h2 className="text-4xl font-bold text-white mb-6">About Me</h2>
+                            <div className="card-bg-glass p-8 rounded-2xl">
+                                <p className="text-slate-300 text-lg leading-relaxed">{professional.summary}</p>
+                                <button onClick={speakBio} className="mt-6 flex items-center gap-2 text-amber-400 hover:text-white transition-colors duration-300">
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.858 17.142a5 5 0 010-7.072m2.828 9.9a9 9 0 010-12.728M12 12h.01" /></svg>
+                                    Read Bio Aloud
+                                </button>
                             </div>
                         </div>
                     </div>
                 </section>
             );
         };
-
-        // Portfolio Section Component
+        
+        // --- Portfolio Section ---
         const PortfolioSection = () => {
+            const [filter, setFilter] = useState('All');
             const [selectedProject, setSelectedProject] = useState(null);
-            const [filter, setFilter] = useState('all');
 
-            const projects = [
-                {
-                    id: 1,
-                    title: 'Financial Dashboard',
-                    category: 'development',
-                    description: 'Interactive financial reporting dashboard with real-time analytics',
-                    tech: ['React', 'D3.js', 'Node.js'],
-                    theme: 'savannah'
-                },
-                {
-                    id: 2,
-                    title: 'Business Strategy Consulting',
-                    category: 'consulting',
-                    description: 'Comprehensive business strategy development for tech startups',
-                    tech: ['Analysis', 'Planning', 'Implementation'],
-                    theme: 'nairobi'
-                },
-                {
-                    id: 3,
-                    title: 'Tax Optimization Platform',
-                    category: 'development',
-                    description: 'Automated tax calculation and optimization system',
-                    tech: ['Python', 'Django', 'PostgreSQL'],
-                    theme: 'sunset'
-                },
-                {
-                    id: 4,
-                    title: 'Financial Education App',
-                    category: 'design',
-                    description: 'Mobile app for financial literacy education',
-                    tech: ['UI/UX', 'Figma', 'Prototype'],
-                    theme: 'acacia'
-                }
-            ];
+            const filteredProjects = portfolioProjects.filter(p => filter === 'All' || p.category === filter);
 
-            const categories = [
-                { id: 'all', name: 'All', icon: '🌟' },
-                { id: 'development', name: 'Development', icon: '💻' },
-                { id: 'consulting', name: 'Consulting', icon: '📊' },
-                { id: 'design', name: 'Design', icon: '🎨' }
-            ];
-
-            const filteredProjects = filter === 'all' ? projects : projects.filter(p => p.category === filter);
-
-            const getThemeClasses = (theme) => {
-                const themes = {
-                    savannah: 'bg-gradient-to-br from-green-600 to-yellow-600',
-                    nairobi: 'bg-gradient-to-br from-blue-600 to-purple-600',
-                    sunset: 'bg-gradient-to-br from-orange-600 to-red-600',
-                    acacia: 'bg-gradient-to-br from-yellow-600 to-orange-600'
-                };
-                return themes[theme] || themes.savannah;
-            };
+            const Modal = ({ project, onClose }) => (
+                <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4" onClick={onClose}>
+                    <div className="bg-[#1e293b] rounded-lg max-w-4xl w-full mx-auto overflow-hidden" onClick={e => e.stopPropagation()}>
+                        <img src={project.image} alt={project.title} className="w-full h-64 object-cover"/>
+                        <div className="p-8">
+                            <h3 className={`text-3xl font-bold ${project.theme.replace('bg-','text-')}`}>{project.title}</h3>
+                            <p className="text-slate-300 mt-4">{project.description}</p>
+                            <button onClick={onClose} className="mt-6 px-6 py-2 bg-amber-500 text-black font-bold rounded-full hover:bg-white transition-colors">Close</button>
+                        </div>
+                    </div>
+                </div>
+            );
 
             return (
-                <section className="min-h-screen py-20 bg-gradient-to-br from-gray-900 to-black">
+                <section id="portfolio" className="py-24 bg-[#0a0a0a]">
                     <div className="container mx-auto px-6">
-                        <h2 className="text-5xl font-bold text-center mb-16 orbitron text-white">Portfolio</h2>
-                        
-                        {/* Filter Categories */}
-                        <div className="flex justify-center mb-12 flex-wrap gap-4">
-                            {categories.map(category => (
-                                <button
-                                    key={category.id}
-                                    onClick={() => setFilter(category.id)}
-                                    className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ripple-effect ${
-                                        filter === category.id
-                                            ? 'bg-gradient-to-r from-orange-500 to-purple-600 text-white neon-glow'
-                                            : 'glass-morphism text-white hover:bg-white hover:text-gray-800'
-                                    }`}
+                        <h2 className="text-4xl font-bold text-center text-white mb-12">My Work</h2>
+                        <div className="flex justify-center gap-4 mb-12">
+                            {['All', 'Development', 'Design'].map(cat => (
+                                <button 
+                                    key={cat}
+                                    onClick={() => setFilter(cat)}
+                                    className={`px-6 py-2 font-semibold rounded-full transition-all duration-300 ${filter === cat ? 'bg-amber-500 text-black' : 'bg-slate-800 text-white hover:bg-slate-700'}`}
                                 >
-                                    <span className="mr-2">{category.icon}</span>
-                                    {category.name}
+                                    {cat}
                                 </button>
                             ))}
                         </div>
-
-                        {/* Project Grid */}
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                             {filteredProjects.map(project => (
-                                <div
-                                    key={project.id}
-                                    className="isometric-card glass-morphism rounded-2xl overflow-hidden cursor-pointer group"
+                                <div 
+                                    key={project.id} 
+                                    className="group relative overflow-hidden rounded-2xl cursor-pointer"
                                     onClick={() => setSelectedProject(project)}
                                 >
-                                    <div className={`h-48 ${getThemeClasses(project.theme)} flex items-center justify-center text-6xl font-bold text-white relative overflow-hidden`}>
-                                        <div className="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-10 transition-all duration-300"></div>
-                                        <span className="relative z-10 group-hover:scale-110 transition-transform duration-300">
-                                            {project.title.charAt(0)}
-                                        </span>
-                                    </div>
-                                    <div className="p-6">
-                                        <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
-                                        <p className="text-gray-300 mb-4">{project.description}</p>
-                                        <div className="flex flex-wrap gap-2">
-                                            {project.tech.map((tech, index) => (
-                                                <span
-                                                    key={index}
-                                                    className="px-3 py-1 bg-gradient-to-r from-orange-400 to-purple-600 text-white text-sm rounded-full"
-                                                >
-                                                    {tech}
-                                                </span>
-                                            ))}
+                                    <img src={project.image} alt={project.title} className="w-full h-72 object-cover transform transition-transform duration-500 group-hover:scale-110" />
+                                    <div className={`absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent flex items-end p-6`}>
+                                        <div>
+                                            <h3 className="text-2xl font-bold text-white">{project.title}</h3>
+                                            <p className={`${project.theme.replace('bg-', 'text-')}`}>{project.category}</p>
                                         </div>
                                     </div>
                                 </div>
                             ))}
                         </div>
-
-                        {/* Project Modal */}
-                        {selectedProject && (
-                            <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4">
-                                <div className="glass-morphism rounded-3xl p-8 max-w-2xl w-full max-h-96 overflow-y-auto">
-                                    <div className="flex justify-between items-start mb-6">
-                                        <h3 className="text-3xl font-bold text-white">{selectedProject.title}</h3>
-                                        <button
-                                            onClick={() => setSelectedProject(null)}
-                                            className="text-white hover:text-red-400 text-2xl"
-                                        >
-                                            ×
-                                        </button>
-                                    </div>
-                                    <p className="text-gray-200 text-lg mb-6">{selectedProject.description}</p>
-                                    <div className="flex flex-wrap gap-2 mb-6">
-                                        {selectedProject.tech.map((tech, index) => (
-                                            <span
-                                                key={index}
-                                                className="px-4 py-2 bg-gradient-to-r from-orange-400 to-purple-600 text-white rounded-full"
-                                            >
-                                                {tech}
-                                            </span>
-                                        ))}
-                                    </div>
-                                    <div className="text-center">
-                                        <button className="px-8 py-3 bg-gradient-to-r from-orange-500 to-purple-600 text-white font-bold rounded-full hover:scale-105 transition-transform duration-300">
-                                            View Project Details
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        )}
                     </div>
+                    {selectedProject && <Modal project={selectedProject} onClose={() => setSelectedProject(null)} />}
                 </section>
             );
         };
-
-        // Skills Section Component
-        const SkillsSection = () => {
-            const [skills] = useState([
-                { name: 'Financial Analysis', level: 95, color: '#ff6b35' },
-                { name: 'Business Strategy', level: 90, color: '#f7931e' },
-                { name: 'Data Analytics', level: 85, color: '#e91e63' },
-                { name: 'Project Management', level: 88, color: '#9c27b0' },
-                { name: 'Tax Planning', level: 92, color: '#673ab7' },
-                { name: 'Risk Management', level: 87, color: '#4caf50' }
-            ]);
-
-            const [quizActive, setQuizActive] = useState(false);
-            const [quizScore, setQuizScore] = useState(0);
-
-            const startQuiz = () => {
-                setQuizActive(true);
-                setTimeout(() => {
-                    setQuizScore(Math.floor(Math.random() * 100) + 1);
-                    setQuizActive(false);
-                    // Trigger confetti animation
-                    if (window.confetti) {
-                        window.confetti({
-                            particleCount: 100,
-                            spread: 70,
-                            origin: { y: 0.6 }
-                        });
-                    }
-                }, 3000);
-            };
-
-            useEffect(() => {
-                const circles = document.querySelectorAll('.skill-arc');
-                circles.forEach((circle, index) => {
-                    const skill = skills[index];
-                    const circumference = 2 * Math.PI * 45;
-                    const offset = circumference - (skill.level / 100) * circumference;
-                    circle.style.strokeDashoffset = offset;
-                });
-            }, [skills]);
-
-            return (
-                <section className="min-h-screen py-20 bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900">
+        
+        // --- Skills Section ---
+        const Skills = () => {
+            return(
+                <section id="skills" className="py-24 bg-gradient-to-br from-[#1e293b] to-[#0f172a]">
                     <div className="container mx-auto px-6">
-                        <h2 className="text-5xl font-bold text-center mb-16 orbitron text-white">Skills & Expertise</h2>
-                        
-                        <div className="grid lg:grid-cols-2 gap-12 items-center">
-                            {/* Skills Chart */}
-                            <div className="drum-pattern w-96 h-96 mx-auto relative flex items-center justify-center">
-                                <div className="grid grid-cols-2 gap-8">
-                                    {skills.map((skill, index) => (
-                                        <div key={index} className="text-center">
-                                            <div className="relative w-24 h-24 mx-auto mb-4">
-                                                <svg className="w-24 h-24 transform -rotate-90">
-                                                    <circle
-                                                        cx="48"
-                                                        cy="48"
-                                                        r="45"
-                                                        stroke="rgba(255,255,255,0.1)"
-                                                        strokeWidth="6"
-                                                        fill="none"
-                                                    />
-                                                    <circle
-                                                        cx="48"
-                                                        cy="48"
-                                                        r="45"
-                                                        stroke={skill.color}
-                                                        strokeWidth="6"
-                                                        fill="none"
-                                                        className="skill-arc"
-                                                        strokeLinecap="round"
-                                                    />
-                                                </svg>
-                                                <div className="absolute inset-0 flex items-center justify-center">
-                                                    <span className="text-white font-bold text-sm">{skill.level}%</span>
-                                                </div>
-                                            </div>
-                                            <h3 className="text-white text-sm font-semibold">{skill.name}</h3>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-
-                            {/* Interactive Quiz */}
-                            <div className="glass-morphism rounded-3xl p-8 text-center">
-                                <h3 className="text-3xl font-bold text-white mb-6">Test My Expertise</h3>
-                                <p className="text-gray-200 mb-8">
-                                    Want to see my skills in action? Take a quick interactive challenge!
-                                </p>
-                                
-                                {!quizActive && quizScore === 0 && (
-                                    <button
-                                        onClick={startQuiz}
-                                        className="px-8 py-4 bg-gradient-to-r from-orange-500 to-purple-600 text-white font-bold text-lg rounded-full hover:scale-105 transition-all duration-300 neon-glow"
-                                    >
-                                        🚀 Start Challenge
-                                    </button>
-                                )}
-
-                                {quizActive && (
-                                    <p className="text-white text-xl animate-pulse">Calculating Score...</p>
-                                )}
-
-                                {!quizActive && quizScore > 0 && (
-                                    <div>
-                                        <p className="text-4xl font-bold text-green-400 mb-4">Your Score: {quizScore}%</p>
-                                        <button
-                                            onClick={() => setQuizScore(0)}
-                                            className="px-6 py-3 bg-gradient-to-r from-orange-500 to-purple-600 text-white font-semibold rounded-full hover:scale-105 transition-transform duration-300"
-                                            >
-                                            🔁 Try Again
-                                        </button>
+                        <h2 className="text-4xl font-bold text-center text-white mb-16">Skills & Expertise</h2>
+                        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-8 text-center">
+                            {skills.map(skill => (
+                                <div key={skill.name} className="flex flex-col items-center group">
+                                    <div className="w-24 h-24 p-5 card-bg-glass rounded-full flex items-center justify-center transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(251,191,36,0.6)] group-hover:-translate-y-2">
+                                        <img src={skill.icon} alt={skill.name} className="h-full w-full object-contain"/>
                                     </div>
-                                )}
-                                
-                                {!quizActive && quizScore === 0 && (
-                                    <button
-                                        onClick={startQuiz}
-                                        className="px-8 py-4 bg-gradient-to-r from-orange-500 to-purple-600 text-white font-bold text-lg rounded-full hover:scale-105 transition-all duration-300 neon-glow"
-                                        >
-                                        🚀 Start Challenge
-                                    </button>
-                                )}
-                            </div>
+                                    <p className="mt-4 font-semibold text-white">{skill.name}</p>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </section>
             );
         };
+
+        // --- Contact Section ---
+        const Contact = () => {
+            const [submitted, setSubmitted] = useState(false);
+            
+            const handleSubmit = (e) => {
+                e.preventDefault();
+                setSubmitted(true);
+                 setTimeout(() => setSubmitted(false), 5000);
+            };
+
+            return (
+                 <section id="contact" className="py-24 bg-black relative overflow-hidden">
+                    <div className="absolute inset-0 opacity-20">
+                         {/* Placeholder for a cool background, e.g. animated constellations */}
+                    </div>
+                    <div className="container mx-auto px-6 relative z-10">
+                        <h2 className="text-4xl font-bold text-center text-white mb-12">Get In Touch</h2>
+                        <div className="max-w-2xl mx-auto card-bg-glass p-8 rounded-2xl">
+                            {submitted ? (
+                                <div className="text-center">
+                                    <h3 className="text-2xl font-bold text-amber-400">Thank You!</h3>
+                                    <p className="text-slate-300 mt-2">Your message has been sent. I'll get back to you soon.</p>
+                                </div>
+                            ) : (
+                                <form>
+                                    <div className="grid md:grid-cols-2 gap-6">
+                                        <input type="text" placeholder="Your Name" required className="w-full bg-slate-800 p-4 rounded-lg border border-slate-700 focus:outline-none focus:ring-2 focus:ring-amber-500" />
+                                        <input type="email" placeholder="Your Email" required className="w-full bg-slate-800 p-4 rounded-lg border border-slate-700 focus:outline-none focus:ring-2 focus:ring-amber-500" />
+                                    </div>
+                                    <textarea placeholder="Your Message" rows="5" required className="w-full mt-6 bg-slate-800 p-4 rounded-lg border border-slate-700 focus:outline-none focus:ring-2 focus:ring-amber-500"></textarea>
+                                    <div className="text-center mt-6">
+                                         <button onClick={handleSubmit} className="px-8 py-4 bg-amber-500 text-black font-bold uppercase tracking-widest rounded-full transition-all duration-300 hover:bg-white hover:shadow-[0_0_20px_rgba(251,191,36,0.8)] hover:scale-110 transform">
+                                            Send Message
+                                        </button>
+                                    </div>
+                                </form>
+                            )}
+                        </div>
+                         <div className="text-center mt-12">
+                            <p className="text-slate-400">Or reach me via</p>
+                            <a href={`mailto:${professional.email}`} className="text-amber-400 text-xl hover:text-white transition-colors">{professional.email}</a>
+                        </div>
+                    </div>
+                 </section>
+            );
+        };
         
-        // Main App Component
-        const App = () => (
-            <>
-                <HeroSection />
-                <AboutSection />
-                <PortfolioSection />
-                <SkillsSection />
-            </>
-        );
-        
-        // Render the App
-        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+        // --- Main App Component ---
+        const App = () => {
+            return (
+                <main>
+                    <Hero />
+                    <About />
+                    <PortfolioSection />
+                    <Skills />
+                    <Contact />
+                </main>
+            );
+        };
+
+        // Render the app
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+
     </script>
 </body>
 </html>
